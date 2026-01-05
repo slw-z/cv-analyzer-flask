@@ -100,7 +100,6 @@ L'application utilise :
 
 ## 🔮 Prochaines fonctionnalités
 
-- [ ] Export PDF des résultats
 - [ ] Déploiement sur AWS
 - [ ] API REST
 - [ ] Version mobile (Flutter)
