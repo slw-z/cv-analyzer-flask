@@ -6,7 +6,7 @@
 
 Une application web Flask qui analyse la compatibilité entre un CV et une offre d'emploi en utilisant le traitement du langage naturel (NLP).
 
-![Screenshot principal](screenshot/demo_2_resultats.png)
+![Démo CV Analyzer](screenshot/demo_app_en_action.gif)
 
 ## ✨ Fonctionnalités
 
