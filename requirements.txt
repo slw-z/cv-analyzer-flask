@@ -1,5 +1,23 @@
-flask
-werkzeug
-pypdf
-python-docx
-nltk
+blinker @ file:///C:/b/abs_b1i87khtob/croot/blinker_1737448732095/work
+charset-normalizer==3.4.4
+click @ file:///C:/b/abs_42rbjngfys/croot/click_1744271606983/work
+colorama @ file:///C:/b/abs_a9ozq0l032/croot/colorama_1672387194846/work
+Flask @ file:///C:/b/abs_28dbmjidmh/croot/flask_1756453142071/work
+importlib_metadata @ file:///C:/b/abs_9d0lp1ysmt/croot/importlib_metadata-suite_1732633510972/work
+itsdangerous @ file:///C:/b/abs_c4vwgdr5yn/croot/itsdangerous_1716533399914/work
+Jinja2 @ file:///C:/b/abs_920kup4e6u/croot/jinja2_1741711580669/work
+joblib==1.5.3
+lxml==6.0.2
+MarkupSafe @ file:///C:/b/abs_a0ma7ge0jc/croot/markupsafe_1738584052792/work
+nltk==3.9.2
+pillow==11.3.0
+pypdf==6.5.0
+PyPDF2==3.0.1
+python-docx==1.2.0
+regex==2025.11.3
+reportlab==4.4.7
+tqdm==4.67.1
+typing_extensions==4.15.0
+Werkzeug @ file:///C:/b/abs_c7bupijx2_/croot/werkzeug_1737448709012/work
+zipp @ file:///C:/b/abs_2fcpcg89my/croot/zipp_1732630746332/work
+gunicorn
