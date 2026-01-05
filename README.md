@@ -34,7 +34,7 @@ Une application web Flask qui analyse la compatibilité entre un CV et une offre
 ![Tableau](screenshot/demo_4_tableau_des_mots_cles.png)
 
 ### Tableau de suggestions
-![Tableau](demo_5_suggestions_ amelioration.png)
+![Tableau](screenshot/demo_5_suggestions_amelioration.png)
 
 
 ## 🚀 Installation
