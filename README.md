@@ -1,5 +1,8 @@
 # 🎯 CV Analyzer - Analyseur de CV Intelligent
-
+![Python](https://img.shields.io/badge/Python-3.8+-blue)
+![Flask](https://img.shields.io/badge/Flask-3.0-green)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+![Status](https://img.shields.io/badge/Status-Production--Ready-brightgreen)
 Une application web Flask qui analyse la compatibilité entre un CV et une offre d'emploi en utilisant le traitement du langage naturel (NLP).
 
 ![Screenshot principal](screenshot/demo_2_resultats.png)
