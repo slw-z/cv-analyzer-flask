@@ -1,8 +1,12 @@
 # 🎯 CV Analyzer - Analyseur de CV Intelligent
+![Python](https://img.shields.io/badge/Python-3.8+-blue)
+![Flask](https://img.shields.io/badge/Flask-3.0-green)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+![Status](https://img.shields.io/badge/Status-Production--Ready-brightgreen)
 
 Une application web Flask qui analyse la compatibilité entre un CV et une offre d'emploi en utilisant le traitement du langage naturel (NLP).
 
-![Screenshot principal](screenshot/demo_2_resultats.png)
+![Démo CV Analyzer](screenshot/demo_app_en_action.gif)
 
 ## ✨ Fonctionnalités
 
@@ -10,6 +14,7 @@ Une application web Flask qui analyse la compatibilité entre un CV et une offre
 - 🎯 **Détection de compétences** : Identification automatique des compétences clés
 - 📈 **Analyse de mots-clés** : Comparaison détaillée du vocabulaire
 - 💡 **Suggestions d'amélioration** : Recommandations personnalisées
+- 💾 **Export PDF de Rapport** : Génération d'un rapport complet et téléchargeable pour un suivi hors ligne.
 - 🎨 **Interface moderne** : Design professionnel et responsive
 
 ## 🛠️ Technologies utilisées
@@ -18,6 +23,7 @@ Une application web Flask qui analyse la compatibilité entre un CV et une offre
 - **NLP** : Scikit-learn (TF-IDF, Cosine Similarity)
 - **Frontend** : HTML5, CSS3
 - **Analyse** : Regex, tokenization
+- **Rapport** : ReportLab (PDF Generation)
 
 ## 📸 Captures d'écran
 
@@ -30,13 +36,11 @@ Une application web Flask qui analyse la compatibilité entre un CV et une offre
 ### Compétences détectées
 ![Compétences](screenshot/demo_3_competences_trouvees.png)
 
-### Tableau de mots-clés
-![Tableau](screenshot/demo_4_tableau_des_mots_cles.png)
-
 ### Tableau de suggestions
 ![Tableau](screenshot/demo_5_suggestions_amelioration.png)
 
-
+### Export PDF
+![Boutons d'action](screenshot/demo_6_export_pdf.png)
 ## 🚀 Installation
 
 ### Prérequis
@@ -47,9 +51,8 @@ Une application web Flask qui analyse la compatibilité entre un CV et une offre
 
 1. **Clone le repository**
 ```bash
-git clone https://github.com/slw-z/cv-analyzer-flask.git
+git clone [https://github.com/slw-z/cv-analyzer-flask.git](https://github.com/slw-z/cv-analyzer-flask.git)
 cd cv-analyzer-flask
-```
 
 2. **Crée un environnement virtuel**
 ```bash
@@ -98,7 +101,6 @@ L'application utilise :
 
 ## 🔮 Prochaines fonctionnalités
 
-- [ ] Export PDF des résultats
 - [ ] Déploiement sur AWS
 - [ ] API REST
 - [ ] Version mobile (Flutter)
