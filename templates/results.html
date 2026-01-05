@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Résultats d'Analyse - CV Analyzer Pro</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
     <style>
+        /* Laisser tous vos styles CSS personnalisés ici */
         * {
             margin: 0;
             padding: 0;
@@ -280,13 +285,8 @@
         }
 
         /* Buttons */
-        .button-group {
-            display: flex;
-            gap: 15px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-        }
-
+        /* NOTE: Les classes .btn, .btn-primary sont définies ici pour le style CUSTOM,
+           tandis que .btn-danger et les classes de layout (d-flex, etc.) sont gérées par Bootstrap */
         .btn {
             padding: 15px 30px;
             border: none;
@@ -294,7 +294,9 @@
             font-size: 1.1em;
             cursor: pointer;
             text-decoration: none;
-            display: inline-block;
+            display: inline-flex; /* MODIFIÉ: aligne l'icône et le texte */
+            align-items: center; /* MODIFIÉ: aligne l'icône et le texte */
+            gap: 8px; /* MODIFIÉ: espace entre l'icône et le texte */
             transition: transform 0.2s, box-shadow 0.2s;
         }
 
@@ -308,10 +310,12 @@
             color: white;
         }
 
-        .btn-secondary {
+        .btn-secondary { /* Pas utilisé dans le code final mais conservé pour l'exemple */
             background: #6c757d;
             color: white;
         }
+        /* Fin du style des boutons custom */
+
 
         /* Responsive */
         @media (max-width: 768px) {
@@ -346,20 +350,17 @@
 </head>
 <body>
     <div class="container">
-        <!-- Header -->
         <div class="header">
             <h1>📊 Résultats d'Analyse</h1>
             <p>CV : {{ cv_filename }}</p>
         </div>
 
-        <!-- Score Section -->
         <div class="score-section">
             <div class="score-interpretation">{{ results.interpretation.emoji }} {{ results.interpretation.title }}</div>
             <div class="score-number">{{ results.score }}%</div>
             <div class="score-message">{{ results.interpretation.message }}</div>
         </div>
 
-        <!-- Context for Junior -->
         {% if results.score >= 8 and results.score < 18 %}
         <div class="context-box">
             <h4>📊 CONTEXTE POUR PROFIL JUNIOR</h4>
@@ -368,16 +369,15 @@
                 <li>Les entreprises utilisent des vocabulaires différents</li>
                 <li></li>
                 <li><strong>📈 Benchmarks typiques junior:</strong></li>
-                <li>   &lt; 8%   : Profil incompatible</li>
-                <li>   8-12%  : Adapte avant de postuler</li>
-                <li>   <strong>12-18% : ✅ POSTULE ! (avec adaptations)</strong></li>
-                <li>   18-25% : Très bon match</li>
-                <li>   25%+   : Excellent (rare)</li>
+                <li>   &lt; 8%   : Profil incompatible</li>
+                <li>   8-12%  : Adapte avant de postuler</li>
+                <li>   <strong>12-18% : ✅ POSTULE ! (avec adaptations)</strong></li>
+                <li>    18-25% : Très bon match</li>
+                <li>    25%+   : Excellent (rare)</li>
             </ul>
         </div>
         {% endif %}
 
-        <!-- Statistics -->
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-number">{{ results.stats.cv_keywords }}</div>
@@ -397,7 +397,6 @@
             </div>
         </div>
 
-        <!-- Skills Found -->
         {% if results.skills.common %}
         <div class="section">
             <div class="section-title">
@@ -412,7 +411,6 @@
         </div>
         {% endif %}
 
-        <!-- Missing Skills -->
         {% if results.suggestions.skills %}
         <div class="section">
             <div class="section-title">
@@ -435,7 +433,6 @@
         </div>
         {% endif %}
 
-        <!-- Keywords -->
         <div class="section">
             <div class="section-title">
                 <span>🔑</span>
@@ -467,7 +464,6 @@
             </table>
         </div>
 
-        <!-- Keyword Suggestions -->
         {% if results.suggestions.keywords %}
         <div class="section">
             <div class="section-title">
@@ -487,7 +483,6 @@
         </div>
         {% endif %}
 
-        <!-- Improvement Estimation -->
         <div class="improvement-box">
             <h3 style="margin-bottom: 20px;">📊 Impact Estimé des Modifications</h3>
             <div class="improvement-comparison">
@@ -506,19 +501,15 @@
             </div>
         </div>
 
-        <!-- Action Buttons -->
-        <div class="button-group">
-            <a href="{{ url_for('home') }}" class="btn btn-primary">🔄 Nouvelle Analyse</a>
-            <button onclick="window.print()" class="btn btn-secondary">🖨️ Imprimer</button>
+        <div class="d-flex justify-content-center mt-4 mb-5">
+            <a href="{{ url_for('home') }}" class="btn btn-primary btn-lg me-3">
+                <i class="fas fa-undo"></i> Nouvelle Analyse
+            </a>
+            
+            <a href="{{ url_for('download_report') }}" class="btn btn-danger btn-lg">
+                <i class="fas fa-file-pdf"></i> Exporter le Rapport PDF
+            </a>
         </div>
-    </div>
-</body>
-</html>
-        
-    </div>
-</body>
-</html>
-        
     </div>
 </body>
 </html>
