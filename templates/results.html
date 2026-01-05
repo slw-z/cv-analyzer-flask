@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Résultats d'Analyse - CV Analyzer Pro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #f0f0f0;
+        }
+
+        .header h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        /* Score Section */
+        .score-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .score-number {
+            font-size: 5em;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .score-interpretation {
+            font-size: 1.8em;
+            margin: 15px 0;
+        }
+
+        .score-message {
+            font-size: 1.2em;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Context Box */
+        .context-box {
+            background: #f8f9ff;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .context-box h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .context-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .context-box li {
+            padding: 5px 0;
+            color: #555;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: #f8f9ff;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid #e8ebff;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 10px;
+            font-size: 0.95em;
+        }
+
+        /* Section */
+        .section {
+            margin: 40px 0;
+            padding: 30px;
+            background: #f8f9ff;
+            border-radius: 15px;
+        }
+
+        .section-title {
+            color: #667eea;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e8ebff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Skills */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .skill-badge {
+            background: #667eea;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            display: inline-block;
+        }
+
+        .skill-badge.missing {
+            background: #dc3545;
+        }
+
+        /* Keywords Table */
+        .keywords-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .keywords-table th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .keywords-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e8ebff;
+        }
+
+        .keywords-table tr:hover {
+            background: #f0f2ff;
+        }
+
+        .status-icon {
+            font-size: 1.3em;
+        }
+
+        /* Suggestions */
+        .suggestion-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .suggestion-card.critical {
+            border-left-color: #dc3545;
+        }
+
+        .suggestion-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .skill-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .priority-badge {
+            background: #ffc107;
+            color: #333;
+            padding: 5px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+
+        .priority-badge.critical {
+            background: #dc3545;
+            color: white;
+        }
+
+        /* Improvement Box */
+        .improvement-box {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .improvement-comparison {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .improvement-item {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .improvement-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .improvement-value {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .improvement-arrow {
+            font-size: 3em;
+        }
+
+        /* Buttons */
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            .score-number {
+                font-size: 3em;
+            }
+
+            .section-title {
+                font-size: 1.4em;
+            }
+
+            .improvement-comparison {
+                flex-direction: column;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .button-group {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>📊 Résultats d'Analyse</h1>
+            <p>CV : {{ cv_filename }}</p>
+        </div>
+
+        <!-- Score Section -->
+        <div class="score-section">
+            <div class="score-interpretation">{{ results.interpretation.emoji }} {{ results.interpretation.title }}</div>
+            <div class="score-number">{{ results.score }}%</div>
+            <div class="score-message">{{ results.interpretation.message }}</div>
+        </div>
+
+        <!-- Context for Junior -->
+        {% if results.score >= 8 and results.score < 18 %}
+        <div class="context-box">
+            <h4>📊 CONTEXTE POUR PROFIL JUNIOR</h4>
+            <ul>
+                <li>✅ Ce score est <strong>NORMAL et ACCEPTABLE</strong></li>
+                <li>Les entreprises utilisent des vocabulaires différents</li>
+                <li></li>
+                <li><strong>📈 Benchmarks typiques junior:</strong></li>
+                <li>   &lt; 8%   : Profil incompatible</li>
+                <li>   8-12%  : Adapte avant de postuler</li>
+                <li>   <strong>12-18% : ✅ POSTULE ! (avec adaptations)</strong></li>
+                <li>   18-25% : Très bon match</li>
+                <li>   25%+   : Excellent (rare)</li>
+            </ul>
+        </div>
+        {% endif %}
+
+        <!-- Statistics -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">{{ results.stats.cv_keywords }}</div>
+                <div class="stat-label">Mots-clés dans votre CV</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">{{ results.stats.job_keywords }}</div>
+                <div class="stat-label">Mots-clés dans l'offre</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">{{ results.stats.common_keywords }}</div>
+                <div class="stat-label">Mots-clés en commun</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">{{ results.stats.common_skills }}/{{ results.stats.job_skills }}</div>
+                <div class="stat-label">Compétences trouvées</div>
+            </div>
+        </div>
+
+        <!-- Skills Found -->
+        {% if results.skills.common %}
+        <div class="section">
+            <div class="section-title">
+                <span>✅</span>
+                <span>Compétences Trouvées</span>
+            </div>
+            <div class="skills-container">
+                {% for skill in results.skills.common %}
+                <span class="skill-badge">{{ skill }}</span>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Missing Skills -->
+        {% if results.suggestions.skills %}
+        <div class="section">
+            <div class="section-title">
+                <span>💡</span>
+                <span>Compétences Critiques à Ajouter</span>
+            </div>
+            {% for suggestion in results.suggestions.skills %}
+            <div class="suggestion-card {% if suggestion.priority == 'CRITIQUE' %}critical{% endif %}">
+                <div class="suggestion-header">
+                    <div class="skill-name">❌ {{ suggestion.skill|upper }}</div>
+                    <div class="priority-badge {% if suggestion.priority == 'CRITIQUE' %}critical{% endif %}">
+                        {{ suggestion.priority }}
+                    </div>
+                </div>
+                <p style="color: #666; margin-top: 10px;">
+                    Ajoutez cette compétence dans votre section "Compétences" et mentionnez-la dans une expérience pertinente.
+                </p>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Keywords -->
+        <div class="section">
+            <div class="section-title">
+                <span>🔑</span>
+                <span>Top 15 Mots-Clés de l'Offre</span>
+            </div>
+            <table class="keywords-table">
+                <thead>
+                    <tr>
+                        <th>Statut</th>
+                        <th>Mot-clé</th>
+                        <th>Fréquence</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for keyword in results.top_keywords %}
+                    <tr>
+                        <td class="status-icon">
+                            {% if keyword.in_cv %}
+                                ✅
+                            {% else %}
+                                ❌
+                            {% endif %}
+                        </td>
+                        <td><strong>{{ keyword.word }}</strong></td>
+                        <td>×{{ keyword.count }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Keyword Suggestions -->
+        {% if results.suggestions.keywords %}
+        <div class="section">
+            <div class="section-title">
+                <span>📝</span>
+                <span>Mots-Clés à Intégrer</span>
+            </div>
+            {% for suggestion in results.suggestions.keywords %}
+            <div class="suggestion-card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <strong style="font-size: 1.1em;">{{ suggestion.keyword }}</strong>
+                        <span style="color: #999; margin-left: 10px;">(mentionné {{ suggestion.frequency }}× dans l'offre)</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Improvement Estimation -->
+        <div class="improvement-box">
+            <h3 style="margin-bottom: 20px;">📊 Impact Estimé des Modifications</h3>
+            <div class="improvement-comparison">
+                <div class="improvement-item">
+                    <div class="improvement-label">Score actuel</div>
+                    <div class="improvement-value">{{ results.improvement.current }}%</div>
+                </div>
+                <div class="improvement-arrow">→</div>
+                <div class="improvement-item">
+                    <div class="improvement-label">Score prévu</div>
+                    <div class="improvement-value">{{ results.improvement.estimated }}%</div>
+                </div>
+            </div>
+            <div style="font-size: 1.2em; margin-top: 15px;">
+                Amélioration estimée : <strong>+{{ results.improvement.gain }}%</strong>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="button-group">
+            <a href="{{ url_for('home') }}" class="btn btn-primary">🔄 Nouvelle Analyse</a>
+            <button onclick="window.print()" class="btn btn-secondary">🖨️ Imprimer</button>
+        </div>
+    </div>
+</body>
+</html>
+        
+    </div>
+</body>
+</html>
+        
+    </div>
+</body>
+</html>

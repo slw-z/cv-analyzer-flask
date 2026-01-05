@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Analyzer Pro - Optimisez vos candidatures</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            text-align: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .description {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border-left: 4px solid #667eea;
+        }
+
+        .description h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .description ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .description li {
+            padding: 8px 0;
+            color: #555;
+        }
+
+        .description li:before {
+            content: "✓ ";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        /* Flash Messages */
+        .flash-messages {
+            margin-bottom: 20px;
+        }
+
+        .alert {
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-size: 1em;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        input[type="file"] {
+            width: 100%;
+            padding: 15px;
+            border: 2px dashed #667eea;
+            border-radius: 10px;
+            background: #f8f9ff;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        input[type="file"]:hover {
+            background: #e8ebff;
+            border-color: #764ba2;
+        }
+
+        .file-info {
+            margin-top: 8px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1em;
+            resize: vertical;
+            transition: border-color 0.3s;
+            min-height: 200px;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        textarea::placeholder {
+            color: #999;
+        }
+
+        button {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9ff;
+            border-radius: 10px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 15px;
+        }
+
+        .stat-number {
+            font-size: 2em;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #f0f0f0;
+            color: #666;
+        }
+
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 CV Analyzer Pro</h1>
+        <p class="subtitle">Optimisez votre CV pour maximiser vos chances</p>
+
+        <!-- Description -->
+        <div class="description">
+            <h3>Comment ça marche ?</h3>
+            <ul>
+                <li>Uploadez votre CV (PDF, DOCX ou TXT)</li>
+                <li>Collez le texte de l'offre d'emploi</li>
+                <li>Recevez une analyse détaillée avec suggestions personnalisées</li>
+                <li>Améliorez votre CV pour passer les filtres ATS</li>
+            </ul>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">+244%</div>
+                <div class="stat-label">Amélioration prouvée</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">30+</div>
+                <div class="stat-label">Compétences détectées</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">< 2min</div>
+                <div class="stat-label">Temps d'analyse</div>
+            </div>
+        </div>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <div class="flash-messages">
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Form -->
+        <form action="{{ url_for('analyser') }}" method="POST" enctype="multipart/form-data" id="analyseForm">
+            <div class="form-group">
+                <label for="cv">📄 Votre CV :</label>
+                <input type="file" id="cv" name="cv" accept=".pdf,.docx,.txt" required>
+                <div class="file-info">Formats acceptés : PDF, DOCX, TXT (Max 16MB)</div>
+            </div>
+            
+            <div class="form-group">
+                <label for="offre">📋 Offre d'emploi :</label>
+                <textarea 
+                    id="offre" 
+                    name="offre" 
+                    placeholder="Collez ici le texte complet de l'offre d'emploi...
+
+Exemple :
+Nous recherchons un Data Analyst junior...
+Compétences requises : Python, SQL, Power BI...
+" 
+                    required></textarea>
+            </div>
+            
+            <button type="submit" id="submitBtn">🚀 Analyser Maintenant</button>
+        </form>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Créé par <a href="https://github.com/slw-z" target="_blank">Salwa Zaaraoui</a></p>
+            <p style="margin-top: 5px; font-size: 0.9em;">
+                <a href="https://github.com/slw-z/analyseur-CV-Pro" target="_blank">⭐ GitHub</a> | 
+                <a href="{{ url_for('about') }}">À propos</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Animation du bouton submit pendant l'analyse
+        document.getElementById('analyseForm').addEventListener('submit', function() {
+            const btn = document.getElementById('submitBtn');
+            btn.innerHTML = '⏳ Analyse en cours...';
+            btn.disabled = true;
+        });
+
+        // Prévisualisation du nom de fichier
+        document.getElementById('cv').addEventListener('change', function(e) {
+            if (e.target.files.length > 0) {
+                const fileName = e.target.files[0].name;
+                console.log('Fichier sélectionné:', fileName);
+            }
+        });
+    </script>
+</body>
+</html>
