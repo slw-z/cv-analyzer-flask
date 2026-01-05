@@ -36,9 +36,6 @@ Une application web Flask qui analyse la compatibilité entre un CV et une offre
 ### Compétences détectées
 ![Compétences](screenshot/demo_3_competences_trouvees.png)
 
-### Tableau de mots-clés
-![Tableau](screenshot/demo_4_tableau_des_mots_cles.png)
-
 ### Tableau de suggestions
 ![Tableau](screenshot/demo_5_suggestions_amelioration.png)
 
