@@ -6,13 +6,15 @@
 
 [![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](http://cv-analyzer-pro-env.eba-xf2mxuyb.eu-north-1.elasticbeanstalk.com)
 [![AWS](https://img.shields.io/badge/AWS-Elastic%20Beanstalk-orange)](http://cv-analyzer-pro-env.eba-xf2mxuyb.eu-north-1.elasticbeanstalk.com)
+[![Python](https://img.shields.io/badge/Python-3.11-blue)](https://www.python.org/)
 
 ## 🌐 Démo en ligne
 
-**Testez l'application sans installation :**
+**✨ Testez l'application en production sans installation :**  
 👉 **[cv-analyzer-pro-env.eba-xf2mxuyb.eu-north-1.elasticbeanstalk.com](http://cv-analyzer-pro-env.eba-xf2mxuyb.eu-north-1.elasticbeanstalk.com)**
 
 Une application web Flask qui analyse la compatibilité entre un CV et une offre d'emploi en utilisant le traitement du langage naturel (NLP).
+
 
 ![Démo CV Analyzer](screenshot/demo_app_en_action.gif)
 
