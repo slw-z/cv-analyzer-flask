@@ -38,16 +38,16 @@ Une application web Flask qui analyse la compatibilité entre un CV et une offre
 ## 📸 Captures d'écran
 
 ### Page d'accueil
-![Accueil](screenshot/demo_1_page_accueil.png)
+![Accueil](screenshot/demo_1_accueil.png)
 
 ### Compétences détectées
-![Compétences](screenshot/demo_3_competences_trouvees.png)
+![Compétences](screenshot/demo_2_matching.png)
 
 ### Tableau de suggestions
-![Tableau](screenshot/demo_5_suggestions_amelioration.png)
+![Tableau](screenshot/demo_3_conseils_personnalises.png)
 
 ### Export PDF
-![Boutons d'action](screenshot/demo_6_export_pdf.png)
+![Boutons d'action](screenshot/demo_4_export_pdf.png)
 ## 🚀 Installation
 
 ### Prérequis
